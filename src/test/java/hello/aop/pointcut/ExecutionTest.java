@@ -14,6 +14,14 @@ import static org.assertj.core.api.Assertions.*;
 @Slf4j
 public class ExecutionTest {
 
+    /**
+     * execution 문법
+     * execution(modifiers-pattern? ret-type-pattern declaring-type-pattern? name-pattern(param-pattern) throws-pattern?)
+     * execution(접근제어자? 반환타입 선언타입? 메서드이름(파라미터) 예외?)
+     * ?는 생략 가능
+     * 와일드 카드 (*) 사용 가능
+     */
+
     AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
     Method helloMethod;
 
@@ -115,6 +123,7 @@ public class ExecutionTest {
         assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
     }
 
+    // 선언타입으로 부모타입 허용
     @Test
     void typeMatchSuperType() {
         pointcut.setExpression("execution(* hello.aop.member.MemberService.*(..))");
@@ -137,6 +146,7 @@ public class ExecutionTest {
     }
 
     //String 타입의 파라미터 허용
+    //참고로 매개변수는 부모타입 허용 안된다. 정확하게 일치해야함
     //(String)
     @Test
     void argsMatch() {

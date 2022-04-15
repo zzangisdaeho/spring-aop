@@ -41,8 +41,8 @@ public class ArgsTest {
     }
 
     /**
-     * execution(* *(java.io.Serializable)): 메서드의 시그니처로 판단 (정적)
-     * args(java.io.Serializable): 런타임에 전달된 인수로 판단 (동적)
+     * execution(* *(java.io.Serializable)): 메서드의 시그니처로 판단 (정적) - 파라미터 타입 정확히 일치해야함
+     * args(java.io.Serializable): 런타임에 전달된 인수로 판단 (동적) - 부모 타입 허용
      */
     @Test
     void argsVsExecution() {
