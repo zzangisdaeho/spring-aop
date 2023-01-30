@@ -8,7 +8,9 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
@@ -26,6 +28,7 @@ public class AtTargetAtWithinTest {
         child.parentMethod(); //부모 클래스만 있는 메서드
     }
 
+    @TestConfiguration
     static class Config {
         @Bean
         public Parent parent() {
